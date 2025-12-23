@@ -1,3 +1,5 @@
+import authRoutes from "./modules/auth/auth.routes";
+import orderRoutes from "./modules/orders/order.routes";
 import productRoutes from "./modules/products/product.routes";
 import dotenv from "dotenv";
 dotenv.config();
@@ -27,6 +29,8 @@ const PORT = 5000;
   }
 })();
 app.use("/api/products", productRoutes);
+app.use("/api/orders", orderRoutes);
+app.use("/api/auth", authRoutes);
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
