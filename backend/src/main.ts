@@ -18,7 +18,8 @@ app.get("/health", (req, res) => {
   res.json({ status: "Backend running" });
 });
 
-const PORT = 5000;
+const PORT = Number(process.env.PORT) || 5000;
+
 (async () => {
   try {
     const connection = await pool.getConnection();
@@ -32,5 +33,6 @@ app.use("/api/products", productRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/auth", authRoutes);
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
+
